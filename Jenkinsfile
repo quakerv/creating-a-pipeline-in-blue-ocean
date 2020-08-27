@@ -9,7 +9,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'npm install'
+        sh '''npm config get registry
+npm config set registry https://registry.npm.taobao.org
+npm install'''
       }
     }
 
