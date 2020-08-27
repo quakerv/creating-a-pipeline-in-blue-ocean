@@ -9,8 +9,8 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '''npm config get registry
-npm config set registry https://registry.npm.taobao.org
+        sh '''npm --registry https://registry.npm.taobao.org install pm2 -g
+npm config get registry
 npm install'''
       }
     }
