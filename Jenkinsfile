@@ -2,14 +2,16 @@ pipeline {
   agent {
     docker {
       image 'node:6-alpine'
-      args '-p 3000:3000'
+      args '''-p 3000:3000
+--dns=114.114.114.114'''
     }
 
   }
   stages {
     stage('build') {
       steps {
-        sh '''npm --registry https://registry.npm.taobao.org install pm2 -g
+        sh '''npm --registry https://registry.npm.taobao.org
+npm config set registry https://registry.npm.taobao.org
 npm config get registry
 npm install'''
       }
